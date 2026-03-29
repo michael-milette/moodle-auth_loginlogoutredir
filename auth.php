@@ -30,7 +30,7 @@ class auth_plugin_loginlogoutredir extends auth_plugin_base {
     /**
      * Constructor.
      */
-    function __construct() {
+    public function __construct() {
         $this->authtype = 'loginlogoutredir';
         $this->config = get_config('auth/loginlogoutredir');
     }
@@ -43,7 +43,7 @@ class auth_plugin_loginlogoutredir extends auth_plugin_base {
         return false;
     }
 
-    function user_authenticated_hook(&$user, $username, $password) {
+    public function user_authenticated_hook(&$user, $username, $password) {
 		global $CFG, $SESSION;
 		if (isset($CFG->loginredir) && $CFG->loginredir) {
 			$urltogo = $CFG->loginredir;
@@ -60,7 +60,7 @@ class auth_plugin_loginlogoutredir extends auth_plugin_base {
 		return true;
     }
 
-    function logoutpage_hook() {
+    public function logoutpage_hook() {
 		global $CFG;
 		global $redirect;
 		if (isset($CFG->logoutredir) && $CFG->logoutredir) {
